@@ -1,0 +1,12 @@
+README
+
+spark-submit --class edu.cornell.tech.cs5304.lab3.MovieRecommender --master local[4] --driver-memory 1G ./target/scala-2.10/movie-recommender_2.10-0.0.1.jar data/ml-10M100K/ratings.dat
+
+spark-ec2 \
+--key-pair=james-ds-keypair \
+--identity-file=../../../keys/james-ds-keypair.pem \
+--instance-type=r3.large \
+--spark-version=1.3.0 \
+--copy-aws-credentials \
+--slaves=8 \
+launch data-science-r3.large
