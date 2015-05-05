@@ -1,6 +1,6 @@
 README
 
-spark-submit --class edu.cornell.tech.cs5304.lab3.MovieRecommender --master local[4] --driver-memory 1G ./target/scala-2.10/movie-recommender_2.10-0.0.1.jar data/ml-10M100K/ratings.dat
+spark-submit --class edu.cornell.tech.cs5304.lab3.MovieRecommender --master local[4] --driver-memory 1G ./target/scala-2.10/movie-recommender_2.10-0.0.1.jar data/ml-10M100K/ratings.dat models/
 
 spark-ec2 \
 --key-pair=james-ds-keypair \
@@ -10,3 +10,26 @@ spark-ec2 \
 --copy-aws-credentials \
 --slaves=8 \
 launch data-science-r3.large
+
+../spark/bin/spark-submit \
+--class edu.cornell.tech.cs5304.lab3.MovieRecommender \
+--master spark://ec2-52-5-92-203.compute-1.amazonaws.com:7077 \
+--driver-memory 13G \
+--executor-memory 13G \
+target/scala-2.10/movie-recommender_2.10-0.0.1.jar \
+ratings.dat
+
+
+
+
+spark-ec2 -k james-ds-keypair -i ../../../keys/james-ds-keypair.pem login data-science-r3.large
+
+spark-ec2 get-master data-science-r3.large
+
+#start cluster
+spark-ec2 -k james-key-pair-useast -i ../../../keys/james-ds-keypair.pem --region=us-east-1 start data-science-r3.large
+
+#stop cluster
+spark-ec2 --region=us-east-1 stop data-science-r3.large
+
+../ephemeral-hdfs/bin/hadoop dfs -copyFromLocal data/ml-10M100K/ratings.dat ratings.dat 

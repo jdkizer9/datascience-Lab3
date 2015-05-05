@@ -14,6 +14,8 @@ import org.apache.spark.SparkConf
 import org.apache.spark._
 import org.apache.spark.rdd._
 import org.apache.spark.mllib.recommendation.{ALS, Rating, MatrixFactorizationModel}
+import org.apache.spark.mllib.regression.{LabeledPoint, LinearRegressionWithSGD, LinearRegressionModel}
+import org.apache.spark.mllib.linalg.{Vector, Vectors}
 // import org.apache.spark.rdd.RDD
 // import org.apache.spark.mllib.linalg._
 // import org.apache.spark.mllib.feature._
@@ -23,6 +25,7 @@ import org.apache.spark.mllib.recommendation.{ALS, Rating, MatrixFactorizationMo
 // import scala.math.sqrt
 // import scala.math.pow
 import java.io._
+import scala.io._
 
 
 
@@ -54,7 +57,18 @@ object MovieRecommender {
     val sc = new SparkContext(conf)
 
     val ratingsFile = args(0)
-    val developmentMode = true
+    // val modelOutputDirectory = args(1)
+
+    // val writer = new PrintWriter(new File(modelOutputDirectory + "test.txt" ))
+
+    // writer.write("Testing model output directory: " + modelOutputDirectory)
+    // writer.close()
+
+
+
+    val developmentMode1 = true
+    val developmentMode2 = false
+    val developmentMode3 = false
 
     Logger.getLogger("org.apache.spark").setLevel(Level.WARN)
     Logger.getLogger("org.eclipse.jetty.server").setLevel(Level.OFF)
@@ -72,7 +86,7 @@ object MovieRecommender {
                 .map(_.split("::") match { case Array(userId, movieId, rating, timestamp) =>
                     (timestamp.toLong, Rating(userId.toInt, movieId.toInt, rating.toDouble))
                 })
-        if(developmentMode) {
+        if(developmentMode1) {
             val subsetOfData = 
             totalData
                 .filter(pair => {
@@ -87,7 +101,11 @@ object MovieRecommender {
 
     println("There are " + ratings.count + " ratings")
 
-    val sampledDataWeights = Array(0.20, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08)
+    // val sampledDataWeights = Array(0.20, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08)
+    val sampledDataWeights = 
+        if(developmentMode2) Array(0.20, 0.40, 0.40) 
+        else Array(0.20, 0.20, 0.20, 0.20, 0.20)
+
 
     val dataSets: Array[RDD[Rating]] = ratings.values.randomSplit(sampledDataWeights)
 
@@ -96,7 +114,7 @@ object MovieRecommender {
 
     // create (Model, MSE) pairs for each xvalidation set
 
-    def computeMSE(model: MatrixFactorizationModel, data: RDD[Rating]): Double = {
+    def computeALS_RMSE(model: MatrixFactorizationModel, data: RDD[Rating]): Double = {
         
         val usersMovies = data.map { case Rating(user, movie, rating) =>
           (user, movie)
@@ -110,45 +128,96 @@ object MovieRecommender {
         val ratesAndPreds = data.map { case Rating(user, movie, rating) => 
           ((user, movie), rating)
         }.join(predictions)
+
+        println("Unable to predict " + (data.count - ratesAndPreds.count) + " ratings")
         
         val MSE = ratesAndPreds.map { case ((user, movie), (rating1, rating2)) => 
           val err = (rating1 - rating2)
           err * err
         }.mean()
 
-        println("Mean Squared Error = " + MSE)
-        MSE
+        val RMSE = Math.sqrt(MSE)
+
+        println("Root Mean Squared Error = " + RMSE)
+        RMSE
     }
 
-    // val modelMSEPairs: Array[(MatrixFactorizationModel, Double)] = 
-    //     for{
-    //         i <- (0 until xvalidationSets.length).toArray
-    //     } yield {
-    //         val validationSet: RDD[Rating] = xvalidationSets(i)
-    //         val trainingSet: RDD[Rating] = 
-    //             (0 until xvalidationSets.length)
-    //             .filter(j => i != j)
-    //             .map(j => xvalidationSets(j))
-    //             .reduce(_ ++ _)
+    def computeLinear_RMSE(model: LinearRegressionModel, data: RDD[LabeledPoint]): Double = {
+        val features: RDD[Vector] = data.map { case LabeledPoint(label, features) => features}
 
-    //         val als = new ALS()
-    //         als.setIterations(1)
-    //         val model: MatrixFactorizationModel = als.run(trainingSet)
+        val predictions:RDD[(Long, Double)] = 
+            model.predict(features).zipWithIndex.map(pair => (pair._2, pair._1))
 
-    //         val mse = computeMSE(model, validationSet)
+        val ratesAndPreds: RDD[(Long, (Double, Double))] = 
+            data.map { case LabeledPoint(label, features) => label}
+            .zipWithIndex.map(pair => (pair._2, pair._1))
+            .join(predictions)
 
-    //         (model, mse)
-    //     }
+        val MSE = ratesAndPreds.map { case (id, (rating1, rating2)) => 
+          val err = (rating1 - rating2)
+          err * err
+        }.mean()
 
-    // val bestModelPair = 
-    //     modelMSEPairs
-    //     .sortBy(pair => pair._2)
-    //     .apply(0)
+        val RMSE = Math.sqrt(MSE)
+
+        println("Root Mean Squared Error = " + RMSE)
+        RMSE
+    }
+
+    def meanSelection(feature: Vector): Double ={
+        val featureArray = feature.toArray
+        val sortedSlice =
+            featureArray
+            .sorted
+            .slice(featureArray.length/4, 3*featureArray.length/4)
+
+        sortedSlice.sum / sortedSlice.length.toDouble
+    }
+
+    def medianSelection(feature: Vector): Double ={
+        val featureArray = feature.toArray
+        val sortedSlice =
+            featureArray
+            .sorted
+            
+        if((sortedSlice.length % 2) == 1) {
+            sortedSlice(sortedSlice.length/2 + 1)
+        } else {
+            val v1 = sortedSlice(sortedSlice.length/2)
+            val v2 = sortedSlice(sortedSlice.length/2 + 1)
+            (v1 + v2) / 2
+        }
+    }
+
+    def computeOtherModel_RMSE(mapper: (Vector) => Double, data: RDD[LabeledPoint]): Double = {
+        val ratesAndPreds: RDD[(Double, Double)] = data.map { case LabeledPoint(label, features) => (label, mapper(features))}
+
+        val MSE = ratesAndPreds.map { case (rating1, rating2) => 
+          val err = (rating1 - rating2)
+          err * err
+        }.mean()
+
+        val RMSE = Math.sqrt(MSE)
+
+        println("Root Mean Squared Error = " + RMSE)
+        RMSE
+    }
+
+    var allModels:Array[MatrixFactorizationModel] = Array[MatrixFactorizationModel]()
 
     val parameters: (Int, Double, Int) = {
-        val ranks = List(8, 12)
-        val lambdas = List(1.0, 10.0)
-        val numIters = List(10, 20)
+        val ranks = 
+            if(developmentMode3) List(8)
+            else List(8, 12)
+
+        val lambdas = 
+            if(developmentMode3) List(1.0)
+            else List(1.0, 10.0)
+
+        val numIters = 
+            if(developmentMode3) List(1)
+            else List(10, 20)
+
         val MSEParametersPairs: List[(Double, (Int, Double, Int))] = for {
             rank <- ranks
             lambda <- lambdas
@@ -165,16 +234,14 @@ object MovieRecommender {
                         .map(j => xvalidationSets(j))
                         .reduce(_ ++ _)
 
-                    val als = new ALS()
-                    als.setRank(rank)
-                    als.setLambda(lambda)
-                    als.setIterations(iter)
                     println("Training: Iteration " + i + " with rank=" + rank + ", lambda=" + lambda + ", iters=" + iter)
-                    val model: MatrixFactorizationModel = als.run(trainingSet)
+                    val model: MatrixFactorizationModel = ALS.train(trainingSet, rank, iter, lambda)
 
-                    val mse = computeMSE(model, validationSet)
+                    val rmse = computeALS_RMSE(model, validationSet)
 
-                    (model, mse)
+                    allModels = allModels :+ model
+
+                    (model, rmse)
                 }
             val totalMSE = 
                 modelMSEPairs
@@ -192,18 +259,126 @@ object MovieRecommender {
         bestPair._2
     }
 
+    // allModels.zipWithIndex.foreach(pair => {
+    //     pair._1.save(sc, modelOutputDirectory + "individualModel_"+ pair._2 + ".mfm")
+    // })
+
     val rank = parameters._1
     val lambda = parameters._2
     val iter = parameters._3
-    val trainingSet = xvalidationSets.reduce(_ ++ _)
+    val trainingSet: RDD[Rating] = xvalidationSets.reduce(_ ++ _)
 
-    val als = new ALS()
-    als.setRank(rank)
-    als.setLambda(lambda)
-    als.setIterations(iter)
-    val bestModel: MatrixFactorizationModel = als.run(trainingSet)
+    val bestModel: MatrixFactorizationModel = ALS.train(trainingSet, rank, iter, lambda)
 
-    val testMSE = computeMSE(bestModel, testSet)
-    println("The final MSE is " + testMSE)
+    val testRMSE = computeALS_RMSE(bestModel, testSet)
+    println("The final ALS Model RMSE is " + testRMSE)
+
+    // bestModel.save(sc, modelOutputDirectory + "bestModel.mfm")
+
+
+    def dataSetFromEnsemble(data: RDD[Rating]): RDD[LabeledPoint] = {
+        
+
+        val usersMovies = data.map { case Rating(user, movie, rating) =>
+          (user, movie)
+        }
+
+        usersMovies.cache()
+
+        // println("Number of ratings in dataset: " + usersMovies.count)
+
+        var computedFeatures: RDD[((Int, Int), (Int, Double))] = data.context.emptyRDD
+
+        for (j <- 0 until allModels.length) {
+
+            // computedFeatures.cache()
+            val model = allModels(j)
+
+            // println("Number of features: " + usersMovies.count)
+            val predictions = 
+              model.predict(usersMovies).map { case Rating(user, movie, rating) => 
+                ((user, movie), (j, rating))
+              }
+
+            // println("Number of predictions: " + predictions.count)
+
+            // predictions.foreach(pair => println(pair._1 + ": " + pair._2))
+
+            // val oldFeatures = computedFeatures
+            computedFeatures = computedFeatures ++ predictions
+            // oldFeatures.unpersist(blocking=false)
+        }
+
+        val groupedFeatureIterables: RDD[((Int, Int), Iterable[(Int, Double)])] = 
+            computedFeatures
+            .groupByKey
+
+        // groupedFeatureIterables.foreach(pair => println(pair._1 + ": " + pair._2.size))
+
+        val groupedFeatures: RDD[((Int, Int), Vector)] =
+            groupedFeatureIterables
+            .filter(pair => pair._2.size == allModels.length)
+            .mapValues(it => {
+                if(it.size != allModels.length){
+                    println("the number of features are: " + it.size)
+                    assert(false)
+                }
+                
+                val featureArray = 
+                it
+                .toArray
+                .sortBy(pair => pair._1)
+                .map(pair => pair._2)
+
+                assert(featureArray.length == allModels.length)
+                Vectors.dense(featureArray)
+            })
+
+        val ratesAndPreds:RDD[((Int, Int), (Double, Vector))] = data.map { case Rating(user, movie, rating) => 
+          ((user, movie), rating)
+        }.join(groupedFeatures)
+
+        val outputPoints: RDD[LabeledPoint] = 
+            ratesAndPreds
+            .mapValues(pair => new LabeledPoint(pair._1, pair._2))
+            .values
+
+        outputPoints
+    }
+
+    
+
+
+
+    val convertedTrainingSet = dataSetFromEnsemble(trainingSet)
+    convertedTrainingSet.cache()
+
+    println("Training Set Conversion: " + convertedTrainingSet.count + "/" + trainingSet.count)
+
+    // val numIterations = {
+    //     val computedIterations = (10000000 / trainingSet.count) + 1
+    //     if(computedIterations < 5) 5
+    //     else computedIterations.toInt
+    // }
+
+    val numIterations = 5
+    val linearModel = LinearRegressionWithSGD.train(convertedTrainingSet, numIterations)
+
+    val convertedTestSet = dataSetFromEnsemble(testSet)
+    println("Test Set Conversion: " + convertedTestSet.count + "/" + testSet.count)
+    val linearTestRMSE = computeLinear_RMSE(linearModel, convertedTestSet)
+    println("The Linear Model RMSE is " + linearTestRMSE)
+
+    val meanModelTestRMSE = computeOtherModel_RMSE(meanSelection, convertedTestSet)
+    println("The Mean Model RMSE is " + meanModelTestRMSE)
+
+    val medianModelTestRMSE = computeOtherModel_RMSE(medianSelection, convertedTestSet)
+    println("The Median Model RMSE is " + medianModelTestRMSE)
+
+    // linearModel.save(sc, modelOutputDirectory + "linearModel.lrm")
+
+    // val sameModel = MatrixFactorizationModel.load(sc, "myModelPath")
+
+
   }
 }
