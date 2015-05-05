@@ -1,0 +1,126 @@
+There are 10000054 ratings
+Training: Iteration 0 with rank=8, lambda=1.0, iters=10
+Unable to predict 78 ratings
+Root Mean Squared Error = 1.3253105631087876
+Training: Iteration 1 with rank=8, lambda=1.0, iters=10
+Unable to predict 73 ratings
+Root Mean Squared Error = 1.3255994315068684
+Training: Iteration 2 with rank=8, lambda=1.0, iters=10
+Unable to predict 49 ratings
+Root Mean Squared Error = 1.3264082183808823
+Training: Iteration 3 with rank=8, lambda=1.0, iters=10
+Unable to predict 54 ratings
+Root Mean Squared Error = 1.3264966594952239
+Training: Iteration 0 with rank=8, lambda=1.0, iters=20
+Unable to predict 78 ratings
+Root Mean Squared Error = 1.3253115405225588
+Training: Iteration 1 with rank=8, lambda=1.0, iters=20
+Unable to predict 73 ratings
+Root Mean Squared Error = 1.3256007246144932
+Training: Iteration 2 with rank=8, lambda=1.0, iters=20
+Unable to predict 49 ratings
+Root Mean Squared Error = 1.3264094643572972
+Training: Iteration 3 with rank=8, lambda=1.0, iters=20
+Unable to predict 54 ratings
+Root Mean Squared Error = 1.3264978051860274
+Training: Iteration 0 with rank=8, lambda=10.0, iters=10
+Unable to predict 78 ratings
+Root Mean Squared Error = 3.66833613451808
+Training: Iteration 1 with rank=8, lambda=10.0, iters=10
+Unable to predict 73 ratings
+Root Mean Squared Error = 3.6689775953752752
+Training: Iteration 2 with rank=8, lambda=10.0, iters=10
+Unable to predict 49 ratings
+Root Mean Squared Error = 3.669376868373502
+Training: Iteration 3 with rank=8, lambda=10.0, iters=10
+Unable to predict 54 ratings
+Root Mean Squared Error = 3.668945885122208
+Training: Iteration 0 with rank=8, lambda=10.0, iters=20
+Unable to predict 78 ratings
+Root Mean Squared Error = 3.6683361345180834
+Training: Iteration 1 with rank=8, lambda=10.0, iters=20
+Unable to predict 73 ratings
+Root Mean Squared Error = 3.668977595375275
+Training: Iteration 2 with rank=8, lambda=10.0, iters=20
+Unable to predict 49 ratings
+Root Mean Squared Error = 3.669376868373501
+Training: Iteration 3 with rank=8, lambda=10.0, iters=20
+Unable to predict 54 ratings
+Root Mean Squared Error = 3.668945885122206
+Training: Iteration 0 with rank=12, lambda=1.0, iters=10
+Unable to predict 78 ratings
+Root Mean Squared Error = 1.325311105569055
+Training: Iteration 1 with rank=12, lambda=1.0, iters=10
+Unable to predict 73 ratings
+Root Mean Squared Error = 1.3255994573601209
+Training: Iteration 2 with rank=12, lambda=1.0, iters=10
+Unable to predict 49 ratings
+Root Mean Squared Error = 1.326409489608984
+Training: Iteration 3 with rank=12, lambda=1.0, iters=10
+Unable to predict 54 ratings
+Root Mean Squared Error = 1.3264972400461075
+Training: Iteration 0 with rank=12, lambda=1.0, iters=20
+Unable to predict 78 ratings
+Root Mean Squared Error = 1.3253115406417924
+Training: Iteration 1 with rank=12, lambda=1.0, iters=20
+Unable to predict 73 ratings
+Root Mean Squared Error = 1.3256007253749065
+Training: Iteration 2 with rank=12, lambda=1.0, iters=20
+Unable to predict 49 ratings
+Root Mean Squared Error = 1.3264094647313907
+Training: Iteration 3 with rank=12, lambda=1.0, iters=20
+Unable to predict 54 ratings
+Root Mean Squared Error = 1.3264978057398813
+Training: Iteration 0 with rank=12, lambda=10.0, iters=10
+Unable to predict 78 ratings
+Root Mean Squared Error = 3.6683361345180843
+Training: Iteration 1 with rank=12, lambda=10.0, iters=10
+Unable to predict 73 ratings
+Root Mean Squared Error = 3.668977595375276
+Training: Iteration 2 with rank=12, lambda=10.0, iters=10
+Unable to predict 49 ratings
+Root Mean Squared Error = 3.6693768683734995
+Training: Iteration 3 with rank=12, lambda=10.0, iters=10
+Unable to predict 54 ratings
+Root Mean Squared Error = 3.668945885122208
+Training: Iteration 0 with rank=12, lambda=10.0, iters=20
+Unable to predict 78 ratings
+Root Mean Squared Error = 3.6683361345180816
+Training: Iteration 1 with rank=12, lambda=10.0, iters=20
+Unable to predict 73 ratings
+Root Mean Squared Error = 3.66897759537528
+Training: Iteration 2 with rank=12, lambda=10.0, iters=20
+Unable to predict 49 ratings
+Root Mean Squared Error = 3.6693768683735035
+Training: Iteration 3 with rank=12, lambda=10.0, iters=20
+Unable to predict 54 ratings
+Root Mean Squared Error = 3.6689458851222083
+Unable to predict 40 ratings
+Root Mean Squared Error = 1.3258749387706934
+The final ALS Model RMSE is 1.3258749387706934
+15/05/05 15:32:35 WARN scheduler.TaskSetManager: Stage 11898 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+Training Set Conversion: 8000116/8000370
+15/05/05 15:34:14 WARN scheduler.TaskSetManager: Stage 14142 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/05 15:34:14 WARN scheduler.TaskSetManager: Stage 16385 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/05 15:34:32 WARN netlib.BLAS: Failed to load implementation from: com.github.fommil.netlib.NativeSystemBLAS
+15/05/05 15:34:32 WARN netlib.BLAS: Failed to load implementation from: com.github.fommil.netlib.NativeRefBLAS
+15/05/05 15:34:32 WARN scheduler.TaskSetManager: Stage 18628 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/05 15:34:50 WARN scheduler.TaskSetManager: Stage 20872 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/05 15:35:08 WARN scheduler.TaskSetManager: Stage 23116 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/05 15:35:25 WARN scheduler.TaskSetManager: Stage 25360 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/05 15:35:42 WARN scheduler.TaskSetManager: Stage 27604 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/05 15:38:10 WARN scheduler.TaskSetManager: Stage 29848 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+Test Set Conversion: 1999525/1999684
+15/05/05 15:38:46 WARN scheduler.TaskSetManager: Stage 32092 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/05 15:39:14 WARN scheduler.TaskSetManager: Stage 34335 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/05 15:39:41 WARN scheduler.TaskSetManager: Stage 36578 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/05 15:40:10 WARN scheduler.TaskSetManager: Stage 36579 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+Root Mean Squared Error = 3.92284397931312E9
+The Linear Model RMSE is 3.92284397931312E9
+15/05/05 15:40:50 WARN scheduler.TaskSetManager: Stage 38823 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+Root Mean Squared Error = 2.4536581908197554
+The Mean Model RMSE is 2.4536581908197554
+15/05/05 15:41:19 WARN scheduler.TaskSetManager: Stage 41066 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+Root Mean Squared Error = 1.3556015424197614
+The Median Model RMSE is 1.3556015424197614
+root@ip-172-31-6-196 datascience-Lab3]$ 

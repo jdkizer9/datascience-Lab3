@@ -16,39 +16,13 @@ import org.apache.spark.rdd._
 import org.apache.spark.mllib.recommendation.{ALS, Rating, MatrixFactorizationModel}
 import org.apache.spark.mllib.regression.{LabeledPoint, LinearRegressionWithSGD, LinearRegressionModel}
 import org.apache.spark.mllib.linalg.{Vector, Vectors}
-// import org.apache.spark.rdd.RDD
-// import org.apache.spark.mllib.linalg._
-// import org.apache.spark.mllib.feature._
-
-
-
-// import scala.math.sqrt
-// import scala.math.pow
 import java.io._
 import scala.io._
-
-
-
-// import org.apache.hadoop.mapred.SequenceFileInputFormat
-// import org.apache.hadoop.io.{LongWritable, Text}
- 
-// import com.esotericsoftware.kryo.Kryo
-// import org.apache.spark.serializer.KryoRegistrator
- 
-// class Registrator extends KryoRegistrator {
-//   override def registerClasses(kryo: Kryo) {
-//     kryo.register(classOf[LongWritable])
-//     kryo.register(classOf[Text])
-//   }
-// }
 
 object MovieRecommender {
   /* find ngrams that match a regex; args are regex output input [input ..] */
 
   def main(args: Array[String]) {
-
-  	// val writer = new PrintWriter(new File(args(0)))
-  	// def writeln(str: String): Unit = writer.write(str + '\n')
 
     val conf = new SparkConf()
       .setAppName("movieRecommender")
@@ -57,14 +31,6 @@ object MovieRecommender {
     val sc = new SparkContext(conf)
 
     val ratingsFile = args(0)
-    // val modelOutputDirectory = args(1)
-
-    // val writer = new PrintWriter(new File(modelOutputDirectory + "test.txt" ))
-
-    // writer.write("Testing model output directory: " + modelOutputDirectory)
-    // writer.close()
-
-
 
     val developmentMode1 = false
     val developmentMode2 = false
@@ -72,9 +38,6 @@ object MovieRecommender {
 
     Logger.getLogger("org.apache.spark").setLevel(Level.WARN)
     Logger.getLogger("org.eclipse.jetty.server").setLevel(Level.OFF)
-
-    // val outputDirectory = args(1)
-    // val filePrefix = args(2)
 
 
     // Load and parse the data
@@ -104,8 +67,8 @@ object MovieRecommender {
     // val sampledDataWeights = Array(0.20, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08)
     val sampledDataWeights = 
         if(developmentMode2) Array(0.20, 0.40, 0.40) 
-        else Array(0.20, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08)
-
+        // else Array(0.20, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08)
+        else Array(0.20, 0.20, 0.20, 0.20, 0.20)
 
     val dataSets: Array[RDD[Rating]] = ratings.values.randomSplit(sampledDataWeights)
 
@@ -153,6 +116,7 @@ object MovieRecommender {
             .zipWithIndex.map(pair => (pair._2, pair._1))
             .join(predictions)
 
+        // ratesAndPreds.foreach(println)
         val MSE = ratesAndPreds.map { case (id, (rating1, rating2)) => 
           val err = (rating1 - rating2)
           err * err
@@ -276,7 +240,7 @@ object MovieRecommender {
     // bestModel.save(sc, modelOutputDirectory + "bestModel.mfm")
 
 
-    def dataSetFromEnsemble(data: RDD[Rating]): RDD[LabeledPoint] = {
+    def dataSetFromEnsemble(data: RDD[Rating]): RDD[((Int, Int), LabeledPoint)] = {
         
 
         val usersMovies = data.map { case Rating(user, movie, rating) =>
@@ -302,7 +266,7 @@ object MovieRecommender {
 
             // println("Number of predictions: " + predictions.count)
 
-            // predictions.foreach(pair => println(pair._1 + ": " + pair._2))
+            // predictions.foreach(println)
 
             // val oldFeatures = computedFeatures
             computedFeatures = computedFeatures ++ predictions
@@ -338,10 +302,12 @@ object MovieRecommender {
           ((user, movie), rating)
         }.join(groupedFeatures)
 
-        val outputPoints: RDD[LabeledPoint] = 
+        // ratesAndPreds.foreach(println)
+
+
+        val outputPoints: RDD[((Int, Int), LabeledPoint)] = 
             ratesAndPreds
             .mapValues(pair => new LabeledPoint(pair._1, pair._2))
-            .values
 
         outputPoints
     }
@@ -361,18 +327,24 @@ object MovieRecommender {
     //     else computedIterations.toInt
     // }
 
-    val numIterations = 5
-    val linearModel = LinearRegressionWithSGD.train(convertedTrainingSet, numIterations)
+    // convertedTrainingSet.foreach(println)
+
+    val numIterations = 100
+    val linearModel = LinearRegressionWithSGD.train(convertedTrainingSet.values.cache(), numIterations)
 
     val convertedTestSet = dataSetFromEnsemble(testSet)
+    convertedTestSet.cache()
+
+    // convertedTestSet.foreach(println)
+
     println("Test Set Conversion: " + convertedTestSet.count + "/" + testSet.count)
-    val linearTestRMSE = computeLinear_RMSE(linearModel, convertedTestSet)
+    val linearTestRMSE = computeLinear_RMSE(linearModel, convertedTestSet.values)
     println("The Linear Model RMSE is " + linearTestRMSE)
 
-    val meanModelTestRMSE = computeOtherModel_RMSE(meanSelection, convertedTestSet)
+    val meanModelTestRMSE = computeOtherModel_RMSE(meanSelection, convertedTestSet.values)
     println("The Mean Model RMSE is " + meanModelTestRMSE)
 
-    val medianModelTestRMSE = computeOtherModel_RMSE(medianSelection, convertedTestSet)
+    val medianModelTestRMSE = computeOtherModel_RMSE(medianSelection, convertedTestSet.values)
     println("The Median Model RMSE is " + medianModelTestRMSE)
 
     // linearModel.save(sc, modelOutputDirectory + "linearModel.lrm")

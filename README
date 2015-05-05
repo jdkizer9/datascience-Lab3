@@ -34,4 +34,6 @@ spark-ec2 --region=us-east-1 stop data-science-r3.large
 
 ../ephemeral-hdfs/bin/hadoop dfs -copyFromLocal data/ml-10M100K/ratings.dat ratings.dat
 
+../ephemeral-hdfs/bin/hadoop dfs -copyFromLocal data/ml-10M100K/ratings.dat ratings.dat
+
 ../ephemeral-hdfs/bin/hadoop dfs -rm ratings.dat
