@@ -66,7 +66,7 @@ object MovieRecommender {
 
 
 
-    val developmentMode1 = true
+    val developmentMode1 = false
     val developmentMode2 = false
     val developmentMode3 = false
 
@@ -104,7 +104,7 @@ object MovieRecommender {
     // val sampledDataWeights = Array(0.20, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08)
     val sampledDataWeights = 
         if(developmentMode2) Array(0.20, 0.40, 0.40) 
-        else Array(0.20, 0.20, 0.20, 0.20, 0.20)
+        else Array(0.20, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08)
 
 
     val dataSets: Array[RDD[Rating]] = ratings.values.randomSplit(sampledDataWeights)
