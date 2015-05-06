@@ -53,7 +53,7 @@ object MovieRecommender {
             val subsetOfData = 
             totalData
                 .filter(pair => {
-                    val filterVal = (pair._1 / 47) % 1000
+                    val filterVal = (pair._1 / 47) % 10000
                     filterVal < 1 
                 })
             subsetOfData
@@ -151,6 +151,25 @@ object MovieRecommender {
             val v2 = sortedSlice(sortedSlice.length/2 + 1)
             (v1 + v2) / 2
         }
+    }
+
+    def bucketVoting(feature: Vector): Double = {
+        val featureArray = feature.toArray
+
+        val buckets: Array[(Double, Array[Double])] = 
+            featureArray
+            .map(d => ((((d * 2.0) + 0.5).toInt).toDouble / 2.0))
+            .groupBy( d => d)
+            .toList
+            .sortBy(pair => pair._2.length)
+            .toArray
+
+        val finalVals = 
+            buckets
+            .filter(pair => pair._2.length == buckets(0)._2.length)
+            
+        finalVals.foldLeft(0.0)( (acc, pair) => acc + pair._1) / finalVals.length.toDouble
+
     }
 
     def computeOtherModel_RMSE(mapper: (Vector) => Double, data: RDD[LabeledPoint]): Double = {
@@ -346,6 +365,9 @@ object MovieRecommender {
 
     val medianModelTestRMSE = computeOtherModel_RMSE(medianSelection, convertedTestSet.values)
     println("The Median Model RMSE is " + medianModelTestRMSE)
+
+    val bucketVotingModelTestRMSE = computeOtherModel_RMSE(bucketVoting, convertedTestSet.values)
+    println("The Bucket Voting Model RMSE is " + bucketVotingModelTestRMSE)
 
     // linearModel.save(sc, modelOutputDirectory + "linearModel.lrm")
 
