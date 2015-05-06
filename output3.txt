@@ -1,0 +1,223 @@
+There are 10000054 ratings
+Training: Iteration 0 with rank=8, lambda=1.0, iters=10
+Unable to predict 64 ratings
+Root Mean Squared Error = 1.3254669106489019
+Training: Iteration 1 with rank=8, lambda=1.0, iters=10
+Unable to predict 62 ratings
+Root Mean Squared Error = 1.3264170832478928
+Training: Iteration 2 with rank=8, lambda=1.0, iters=10
+Unable to predict 52 ratings
+Root Mean Squared Error = 1.3260081111234525
+Training: Iteration 3 with rank=8, lambda=1.0, iters=10
+Unable to predict 65 ratings
+Root Mean Squared Error = 1.3265563367089992
+Training: Iteration 0 with rank=8, lambda=1.0, iters=20
+Unable to predict 64 ratings
+Root Mean Squared Error = 1.3254681015115177
+Training: Iteration 1 with rank=8, lambda=1.0, iters=20
+Unable to predict 62 ratings
+Root Mean Squared Error = 1.326418256260963
+Training: Iteration 2 with rank=8, lambda=1.0, iters=20
+Unable to predict 52 ratings
+Root Mean Squared Error = 1.326009377430372
+Training: Iteration 3 with rank=8, lambda=1.0, iters=20
+Unable to predict 65 ratings
+Root Mean Squared Error = 1.3265565766630192
+Training: Iteration 0 with rank=8, lambda=10.0, iters=10
+Unable to predict 64 ratings
+Root Mean Squared Error = 3.6683548930873573
+Training: Iteration 1 with rank=8, lambda=10.0, iters=10
+Unable to predict 62 ratings
+Root Mean Squared Error = 3.668975133032161
+Training: Iteration 2 with rank=8, lambda=10.0, iters=10
+Unable to predict 52 ratings
+Root Mean Squared Error = 3.66893992429625
+Training: Iteration 3 with rank=8, lambda=10.0, iters=10
+Unable to predict 65 ratings
+Root Mean Squared Error = 3.6696089896144155
+Training: Iteration 0 with rank=8, lambda=10.0, iters=20
+Unable to predict 64 ratings
+Root Mean Squared Error = 3.668354893087359
+Training: Iteration 1 with rank=8, lambda=10.0, iters=20
+Unable to predict 62 ratings
+Root Mean Squared Error = 3.6689751330321605
+Training: Iteration 2 with rank=8, lambda=10.0, iters=20
+Unable to predict 52 ratings
+Root Mean Squared Error = 3.6689399242962577
+Training: Iteration 3 with rank=8, lambda=10.0, iters=20
+Unable to predict 65 ratings
+Root Mean Squared Error = 3.6696089896144173
+Training: Iteration 0 with rank=12, lambda=1.0, iters=10
+Unable to predict 64 ratings
+Root Mean Squared Error = 1.3254668384504864
+Training: Iteration 1 with rank=12, lambda=1.0, iters=10
+Unable to predict 62 ratings
+Root Mean Squared Error = 1.3264170208334392
+Training: Iteration 2 with rank=12, lambda=1.0, iters=10
+Unable to predict 52 ratings
+Root Mean Squared Error = 1.326008191719052
+Training: Iteration 3 with rank=12, lambda=1.0, iters=10
+Unable to predict 65 ratings
+Root Mean Squared Error = 1.3265573427233295
+Training: Iteration 0 with rank=12, lambda=1.0, iters=20
+Unable to predict 64 ratings
+Root Mean Squared Error = 1.3254681016799532
+Training: Iteration 1 with rank=12, lambda=1.0, iters=20
+Unable to predict 62 ratings
+Root Mean Squared Error = 1.3264182554464155
+Training: Iteration 2 with rank=12, lambda=1.0, iters=20
+Unable to predict 52 ratings
+Root Mean Squared Error = 1.3260093772530943
+Training: Iteration 3 with rank=12, lambda=1.0, iters=20
+Unable to predict 65 ratings
+Root Mean Squared Error = 1.326556577252011
+Training: Iteration 0 with rank=12, lambda=10.0, iters=10
+Unable to predict 64 ratings
+Root Mean Squared Error = 3.6683548930873604
+Training: Iteration 1 with rank=12, lambda=10.0, iters=10
+Unable to predict 62 ratings
+Root Mean Squared Error = 3.6689751330321636
+Training: Iteration 2 with rank=12, lambda=10.0, iters=10
+Unable to predict 52 ratings
+Root Mean Squared Error = 3.6689399242962506
+Training: Iteration 3 with rank=12, lambda=10.0, iters=10
+Unable to predict 65 ratings
+Root Mean Squared Error = 3.669608989614412
+Training: Iteration 0 with rank=12, lambda=10.0, iters=20
+Unable to predict 64 ratings
+Root Mean Squared Error = 3.6683548930873595
+Training: Iteration 1 with rank=12, lambda=10.0, iters=20
+Unable to predict 62 ratings
+Root Mean Squared Error = 3.6689751330321627
+Training: Iteration 2 with rank=12, lambda=10.0, iters=20
+Unable to predict 52 ratings
+Root Mean Squared Error = 3.668939924296251
+Training: Iteration 3 with rank=12, lambda=10.0, iters=20
+Unable to predict 65 ratings
+Root Mean Squared Error = 3.669608989614414
+Unable to predict 37 ratings
+Root Mean Squared Error = 1.3253560575961358
+The final ALS Model RMSE is 1.3253560575961358
+15/05/06 01:12:33 WARN scheduler.TaskSetManager: Stage 11898 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+Training Set Conversion: 7999629/7999872
+15/05/06 01:14:13 WARN scheduler.TaskSetManager: Stage 14142 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:14:14 WARN scheduler.TaskSetManager: Stage 16385 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:14:31 WARN netlib.BLAS: Failed to load implementation from: com.github.fommil.netlib.NativeSystemBLAS
+15/05/06 01:14:31 WARN netlib.BLAS: Failed to load implementation from: com.github.fommil.netlib.NativeRefBLAS
+15/05/06 01:14:32 WARN scheduler.TaskSetManager: Stage 18628 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:14:50 WARN scheduler.TaskSetManager: Stage 20872 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:15:07 WARN scheduler.TaskSetManager: Stage 23116 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:15:25 WARN scheduler.TaskSetManager: Stage 25360 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:15:42 WARN scheduler.TaskSetManager: Stage 27604 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:16:00 WARN scheduler.TaskSetManager: Stage 29848 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:16:18 WARN scheduler.TaskSetManager: Stage 32092 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:16:35 WARN scheduler.TaskSetManager: Stage 34336 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:16:53 WARN scheduler.TaskSetManager: Stage 36580 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:17:11 WARN scheduler.TaskSetManager: Stage 38824 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:17:28 WARN scheduler.TaskSetManager: Stage 41068 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:17:46 WARN scheduler.TaskSetManager: Stage 43312 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:18:04 WARN scheduler.TaskSetManager: Stage 45556 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:18:21 WARN scheduler.TaskSetManager: Stage 47800 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:18:39 WARN scheduler.TaskSetManager: Stage 50044 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:18:57 WARN scheduler.TaskSetManager: Stage 52288 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:19:14 WARN scheduler.TaskSetManager: Stage 54532 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:19:32 WARN scheduler.TaskSetManager: Stage 56776 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:19:49 WARN scheduler.TaskSetManager: Stage 59020 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:20:07 WARN scheduler.TaskSetManager: Stage 61264 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:20:25 WARN scheduler.TaskSetManager: Stage 63508 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:20:42 WARN scheduler.TaskSetManager: Stage 65752 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:21:00 WARN scheduler.TaskSetManager: Stage 67996 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:21:18 WARN scheduler.TaskSetManager: Stage 70240 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:21:35 WARN scheduler.TaskSetManager: Stage 72484 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:21:53 WARN scheduler.TaskSetManager: Stage 74728 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:22:10 WARN scheduler.TaskSetManager: Stage 76972 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:22:28 WARN scheduler.TaskSetManager: Stage 79216 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:22:45 WARN scheduler.TaskSetManager: Stage 81460 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:23:03 WARN scheduler.TaskSetManager: Stage 83704 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:23:21 WARN scheduler.TaskSetManager: Stage 85948 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:23:38 WARN scheduler.TaskSetManager: Stage 88192 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:23:56 WARN scheduler.TaskSetManager: Stage 90436 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:24:13 WARN scheduler.TaskSetManager: Stage 92680 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:24:31 WARN scheduler.TaskSetManager: Stage 94924 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:24:48 WARN scheduler.TaskSetManager: Stage 97168 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:25:06 WARN scheduler.TaskSetManager: Stage 99412 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:25:24 WARN scheduler.TaskSetManager: Stage 101656 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:25:41 WARN scheduler.TaskSetManager: Stage 103900 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:25:59 WARN scheduler.TaskSetManager: Stage 106144 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:26:16 WARN scheduler.TaskSetManager: Stage 108388 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:26:34 WARN scheduler.TaskSetManager: Stage 110632 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:26:51 WARN scheduler.TaskSetManager: Stage 112876 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:27:09 WARN scheduler.TaskSetManager: Stage 115120 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:27:27 WARN scheduler.TaskSetManager: Stage 117364 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:27:44 WARN scheduler.TaskSetManager: Stage 119608 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:28:02 WARN scheduler.TaskSetManager: Stage 121852 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:28:19 WARN scheduler.TaskSetManager: Stage 124096 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:28:37 WARN scheduler.TaskSetManager: Stage 126340 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:28:55 WARN scheduler.TaskSetManager: Stage 128584 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:29:12 WARN scheduler.TaskSetManager: Stage 130828 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:29:30 WARN scheduler.TaskSetManager: Stage 133072 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:29:47 WARN scheduler.TaskSetManager: Stage 135316 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:30:05 WARN scheduler.TaskSetManager: Stage 137560 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:30:23 WARN scheduler.TaskSetManager: Stage 139804 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:30:40 WARN scheduler.TaskSetManager: Stage 142048 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:30:58 WARN scheduler.TaskSetManager: Stage 144292 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:31:16 WARN scheduler.TaskSetManager: Stage 146536 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:31:33 WARN scheduler.TaskSetManager: Stage 148780 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:31:51 WARN scheduler.TaskSetManager: Stage 151024 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:32:08 WARN scheduler.TaskSetManager: Stage 153268 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:32:26 WARN scheduler.TaskSetManager: Stage 155512 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:32:44 WARN scheduler.TaskSetManager: Stage 157756 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:33:01 WARN scheduler.TaskSetManager: Stage 160000 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:33:19 WARN scheduler.TaskSetManager: Stage 162244 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:33:36 WARN scheduler.TaskSetManager: Stage 164488 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:33:54 WARN scheduler.TaskSetManager: Stage 166732 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:34:11 WARN scheduler.TaskSetManager: Stage 168976 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:34:29 WARN scheduler.TaskSetManager: Stage 171220 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:34:46 WARN scheduler.TaskSetManager: Stage 173464 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:35:04 WARN scheduler.TaskSetManager: Stage 175708 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:35:21 WARN scheduler.TaskSetManager: Stage 177952 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:35:39 WARN scheduler.TaskSetManager: Stage 180196 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:35:57 WARN scheduler.TaskSetManager: Stage 182440 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:36:14 WARN scheduler.TaskSetManager: Stage 184684 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:36:32 WARN scheduler.TaskSetManager: Stage 186928 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:36:50 WARN scheduler.TaskSetManager: Stage 189172 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:37:07 WARN scheduler.TaskSetManager: Stage 191416 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:37:25 WARN scheduler.TaskSetManager: Stage 193660 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:37:42 WARN scheduler.TaskSetManager: Stage 195904 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:38:00 WARN scheduler.TaskSetManager: Stage 198148 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:38:18 WARN scheduler.TaskSetManager: Stage 200392 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:38:35 WARN scheduler.TaskSetManager: Stage 202636 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:38:53 WARN scheduler.TaskSetManager: Stage 204880 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:39:10 WARN scheduler.TaskSetManager: Stage 207124 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:39:28 WARN scheduler.TaskSetManager: Stage 209368 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:39:45 WARN scheduler.TaskSetManager: Stage 211612 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:40:03 WARN scheduler.TaskSetManager: Stage 213856 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:40:21 WARN scheduler.TaskSetManager: Stage 216100 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:40:39 WARN scheduler.TaskSetManager: Stage 218344 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:40:57 WARN scheduler.TaskSetManager: Stage 220588 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:41:14 WARN scheduler.TaskSetManager: Stage 222832 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:41:32 WARN scheduler.TaskSetManager: Stage 225076 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:41:49 WARN scheduler.TaskSetManager: Stage 227320 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:42:07 WARN scheduler.TaskSetManager: Stage 229564 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:42:25 WARN scheduler.TaskSetManager: Stage 231808 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:42:42 WARN scheduler.TaskSetManager: Stage 234052 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:43:00 WARN scheduler.TaskSetManager: Stage 236296 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:43:17 WARN scheduler.TaskSetManager: Stage 238540 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:43:35 WARN scheduler.TaskSetManager: Stage 240784 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:45:58 WARN scheduler.TaskSetManager: Stage 243028 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+Test Set Conversion: 2000007/2000182
+15/05/06 01:46:34 WARN scheduler.TaskSetManager: Stage 245272 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:46:52 WARN scheduler.TaskSetManager: Stage 247515 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:47:09 WARN scheduler.TaskSetManager: Stage 249758 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+15/05/06 01:47:26 WARN scheduler.TaskSetManager: Stage 249759 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+Root Mean Squared Error = 1.0423157388813536E121
+The Linear Model RMSE is 1.0423157388813536E121
+15/05/06 01:47:55 WARN scheduler.TaskSetManager: Stage 252003 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+Root Mean Squared Error = 2.4533863605097954
+The Mean Model RMSE is 2.4533863605097954
+15/05/06 01:48:13 WARN scheduler.TaskSetManager: Stage 254246 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+Root Mean Squared Error = 1.3551884126750073
+The Median Model RMSE is 1.3551884126750073
+15/05/06 01:48:30 WARN scheduler.TaskSetManager: Stage 256489 contains a task of very large size (900 KB). The maximum recommended task size is 100 KB.
+Root Mean Squared Error = 2.3033756056303254
+The Bucket Voting Model RMSE is 2.3033756056303254
