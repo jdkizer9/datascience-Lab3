@@ -46,7 +46,9 @@ object MovieRecommender {
     val ratings: RDD[(Long, Rating)] = {
         val totalData = 
             data
-                .map(_.split("::") match { case Array(userId, movieId, rating, timestamp) =>
+                .zipWithIndex
+                .filter(_._2 > 0)
+                .map(_._1.split(",") match { case Array(userId, movieId, rating, timestamp) =>
                     (timestamp.toLong, Rating(userId.toInt, movieId.toInt, rating.toDouble))
                 })
         if(developmentMode1) {
